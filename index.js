@@ -8,6 +8,8 @@ const flash = require("connect-flash");
 
 const app = express();
 
+const { verifyUser } = require("./libs/middleware");
+
 app.use(express.static("public"));
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
@@ -27,7 +29,7 @@ const dashboardRouter = require("./routes/dashboard.route");
 const userRouter = require("./routes/user.route");
 
 app.use("/", userRouter);
-app.use("/dashboard", dashboardRouter);
+app.use("/dashboard", verifyUser, dashboardRouter);
 
 const PORT = 3000;
 

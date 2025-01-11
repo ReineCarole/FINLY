@@ -5,7 +5,8 @@
     <div class="flex h-screen overflow-hidden">
       <%- include('../partials/navbar') %>
       <div class="ml-56 flex-grow p-10 overflow-y-auto">
-        <h1 class="mb-4 text-xl md:text-2xl">Dashboard</h1>
+        <% if (type === 'data') { %> <%- include('../partials/customerData') %>
+        <% } else { %> <%- include('../partials/customerForm') %> <% } %>
       </div>
     </div>
     <%- include('../partials/script') %>
